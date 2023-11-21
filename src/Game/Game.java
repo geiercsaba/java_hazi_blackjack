@@ -39,7 +39,7 @@ public class Game extends JFrame
         }));
 
         setPreferredSize(new Dimension(800, 600));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         playerPanels = new LinkedList<>();
         dealerPanel = new DealerPanel(new Dealer());
         deck = new Deck();
@@ -113,7 +113,7 @@ public class Game extends JFrame
 
     private void newRound()
     {
-        if(playerPanels.size() == 0)
+        if(playerPanels.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "You need at least one player to play");
             return;
@@ -270,6 +270,7 @@ public class Game extends JFrame
             }
             Player player = panel.getPlayer();
             int currentBet = player.getCurrentBet();
+            String playerWin = player.getName() + " wins";
 
             if(panel.getCardValue() > 21)
             {
@@ -278,24 +279,24 @@ public class Game extends JFrame
             }
 
 
-            if(panel.getCardValue() == 21 && player.getHand().size() == 2 && !(dealerPanel.getDealer().getHand().size() == 2 && dealerCards == 21))
+            if(panel.getCardValue() == 21 && player.getHand().size() == 2 && dealerCards != 21)
             {
                 panel.updateMoney((int) (currentBet * 2.5));
-                JOptionPane.showMessageDialog(null, "Blackjack! "+ player.getName() + " wins");
+                JOptionPane.showMessageDialog(null, "Blackjack! "+ playerWin);
                 continue;
             }
 
             if(dealerPanel.getCardValue() > 21)
             {
                 panel.updateMoney(currentBet * 2);
-                JOptionPane.showMessageDialog(null, player.getName() + " wins");
+                JOptionPane.showMessageDialog(null, playerWin);
                 continue;
             }
 
             if (panel.getCardValue() > dealerCards)
             {
                 panel.updateMoney(currentBet * 2);
-                JOptionPane.showMessageDialog(null, player.getName() + " wins");
+                JOptionPane.showMessageDialog(null, playerWin);
                 continue;
             }
 

@@ -34,6 +34,7 @@ public class PlayerPanel extends JPanel {
     }
 
 
+    @Override
     public String getName()
     {
         return player.getName();

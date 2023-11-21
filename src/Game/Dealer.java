@@ -6,18 +6,18 @@ import java.util.List;
 
 public class Dealer {
 
-    private LinkedList<Card> Hand;
+    private LinkedList<Card> hand;
     private String name;
 
     public Dealer()
     {
-        Hand = new LinkedList<>();
+        hand = new LinkedList<>();
         name = "Dealer";
     }
 
     public Dealer(String name)
     {
-        Hand = new LinkedList<>();
+        hand = new LinkedList<>();
         this.name = name;
     }
 
@@ -26,7 +26,7 @@ public class Dealer {
 
         int value = 0;
         int ace = 0;
-        for(Card card : Hand)
+        for(Card card : hand)
         {
             value += card.getRank().getValue();
             if(card.getRank() == Rank.ACE)
@@ -51,17 +51,17 @@ public class Dealer {
 
     public void addCard(Card card)
     {
-        Hand.add(card);
+        hand.add(card);
     }
 
     public void clearHand()
     {
-        Hand.clear();
+        hand.clear();
     }
 
-    public LinkedList<Card> getHand()
+    public List<Card> getHand()
     {
-        return Hand;
+        return hand;
     }
 
 }

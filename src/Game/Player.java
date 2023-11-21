@@ -1,8 +1,5 @@
 package Game;
 
-import Deck.*;
-import java.util.LinkedList;
-
 public class Player extends Dealer{
     private int money;
     private int currentBet;
