@@ -15,9 +15,12 @@ public class Game extends JFrame
     private JButton btnHit;
     private JButton btnStand;
     private JButton btnDouble;
+    private JButton btnSurrender;
 
     private PlayerPanel activePlayer;
     private JLabel activePlayerLabel;
+
+    private LeaderBoard leaderBoard;
 
     private GridBagConstraints c = new GridBagConstraints();
 
@@ -25,6 +28,16 @@ public class Game extends JFrame
     public Game()
     {
         super("Blackjack");
+        leaderBoard = new LeaderBoard();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            for (PlayerPanel panel : playerPanels) {
+                Player player = panel.getPlayer();
+                leaderBoard.addPlayer(player.getName(), player.getMoney());
+            }
+            leaderBoard.saveLeaderBoard();
+        }));
+
         setPreferredSize(new Dimension(800, 600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         playerPanels = new LinkedList<>();
@@ -43,6 +56,15 @@ public class Game extends JFrame
         c.gridx = 2;
         c.gridy = 0;
         add(btnAddPlayer, c);
+
+        JButton btnLeaderBoard = new JButton("Leaderboard");
+        c.gridx = 0;
+        c.gridy = 0;
+        add(btnLeaderBoard, c);
+        btnLeaderBoard.addActionListener(e -> {
+            String topList = leaderBoard.getLeaderBoard();
+            JOptionPane.showMessageDialog(null, topList);
+        });
 
         btnAddPlayer.addActionListener(e -> {
             String name = JOptionPane.showInputDialog("Enter your name");
@@ -69,12 +91,13 @@ public class Game extends JFrame
         btnHit = new JButton("Hit");
         btnStand = new JButton("Stand");
         btnDouble = new JButton("Double");
+        btnSurrender = new JButton("Surrender");
         activePlayerLabel = new JLabel("Active Player: ");
 
         btnHit.addActionListener(e -> hit());
         btnStand.addActionListener(e -> stand());
         btnDouble.addActionListener(e -> doubleBet());
-
+        btnSurrender.addActionListener(e -> surrender());
     }
 
 
@@ -102,6 +125,7 @@ public class Game extends JFrame
 
         for(PlayerPanel panel: playerPanels)
         {
+            panel.setSurrender(false);
             panel.clearCards();
         }
 
@@ -142,6 +166,9 @@ public class Game extends JFrame
         c.gridx = 2;
         add(btnDouble, c);
 
+        c.gridx = 3;
+        add(btnSurrender, c);
+
 
         activePlayerLabel.setText("Active Player: " + activePlayer.getName());
         c.gridx = 2;
@@ -161,12 +188,25 @@ public class Game extends JFrame
         {
             nextPlayer();
         }
-
     }
+
     private void stand()
     {
         nextPlayer();
     }
+
+    public void surrender()
+    {
+        Player player = activePlayer.getPlayer();
+        if (player.getHand().size() != 2){
+            JOptionPane.showMessageDialog(null, "You can only surrend on your first turn");
+            return;
+        }
+        activePlayer.setSurrender(true);
+        activePlayer.updateMoney(player.getCurrentBet() / 2);
+        nextPlayer();
+    }
+
     private void doubleBet()
     {
         Player player = activePlayer.getPlayer();
@@ -183,7 +223,7 @@ public class Game extends JFrame
         player.setCurrentBet(bet * 2);
         activePlayer.updateMoney(-bet);
         hit();
-        if(player == activePlayer.getPlayer())
+        if(activePlayer != null && activePlayer.getPlayer() == player)
         {
             nextPlayer();
         }
@@ -198,6 +238,8 @@ public class Game extends JFrame
             remove(btnHit);
             remove(btnStand);
             remove(btnDouble);
+            remove(btnSurrender);
+            repaint();
             dealerPlay();
 
             c.gridx = 1;
@@ -222,6 +264,10 @@ public class Game extends JFrame
         int dealerCards = dealerPanel.getCardValue();
         for (PlayerPanel panel: playerPanels)
         {
+            if (panel.isSurrender())
+            {
+                continue;
+            }
             Player player = panel.getPlayer();
             int currentBet = player.getCurrentBet();
 

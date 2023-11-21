@@ -16,7 +16,7 @@ public class PlayerPanel extends JPanel {
     private Player player;
     private JLabel moneyLabel;
     private JLabel nameLabel;
-    private boolean active = false;
+    private boolean surrender = false;
     private LinkedList<BufferedImage> cardImages;
 
 
@@ -59,12 +59,14 @@ public class PlayerPanel extends JPanel {
         }
     }
 
-    public void setActive() {
-        this.active = true;
+    public void setSurrender(boolean surrender)
+    {
+        this.surrender = surrender;
     }
 
-    public void setInactive() {
-        this.active = false;
+    public boolean isSurrender()
+    {
+        return surrender;
     }
 
     public void clearCards()
