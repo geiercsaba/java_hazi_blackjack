@@ -9,6 +9,7 @@ public class Player extends Dealer{
     {
         super(name);
         this.money = 1000;
+        this.currentBet = 0;
     }
 
     public int getCurrentBet()

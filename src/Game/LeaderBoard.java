@@ -43,8 +43,6 @@ public class LeaderBoard {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public String getLeaderBoard() {
@@ -61,5 +59,9 @@ public class LeaderBoard {
         }
 
         return result.toString();
+    }
+
+    public void clearLeaderBoard() {
+        topList.clear();
     }
 }
