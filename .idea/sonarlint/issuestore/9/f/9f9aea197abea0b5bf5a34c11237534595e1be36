@@ -1,0 +1,13 @@
+
+l
+java:S1192H"PDefine a constant instead of duplicating this literal "Active Player: " 3 times.(˝Ê∏8È˝‹ãø1
+d
+java:S1192Ó"FDefine a constant instead of duplicating this literal " wins" 3 times.(ü∏ﬂè8õì¬åø1
+v	java:S135ﬂ"YReduce the total number of break and continue statements in this loop to use at most one.(ùµ£è8úì¬åø1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÏÅ∆´˙ˇˇˇˇ8˝‹ãø1
+C
+java:S1948"&Make "deck" transient or serializable.(Îù∑ô8£Å›ãø1
+k
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(’˚ªˆ˛ˇˇˇˇ8¶Å›ãø1
+[
+java:S1155]">Use isEmpty() to check whether the collection is empty or not.(∑ø∂Ò8∞Å›ãø1

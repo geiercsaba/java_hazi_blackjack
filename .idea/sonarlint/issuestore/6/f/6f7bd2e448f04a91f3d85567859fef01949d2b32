@@ -1,0 +1,7 @@
+
+“
+java:S1319>"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ĞêØ×ÿÿÿÿÿ8¾±Ä‰¿1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÆ«úÿÿÿÿ8ı¦¿‰¿1
+p	java:S116	"ORename this field "Hand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¿ÿÿÿÿÿ8ÿ¦¿‰¿1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ñ¨Œ¿1

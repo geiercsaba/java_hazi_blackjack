@@ -1,0 +1,18 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÆ«úÿÿÿÿ8‘Úï¾1
+V
+java:S1854!"9Remove this useless assignment to local variable "panel".(Ù­Ô8˜Úï¾1
+G
+java:S1481!"*Remove this unused "panel" local variable.(Ù­Ô8šÚï¾1
+G
+java:S1068"*Remove this unused "dealer" private field.(÷ğêİ8Úï¾1
+N
+java:S1068",Remove this unused "btnStart" private field.(ºšÔ¯üÿÿÿÿ8Úï¾1
+L
+java:S1068"*Remove this unused "btnHit" private field.(¸Øöòıÿÿÿÿ8Úï¾1
+N
+java:S1068",Remove this unused "btnStand" private field.(ÕÜª’øÿÿÿÿ8Úï¾1
+O
+java:S1068"-Remove this unused "btnDouble" private field.(š§èœùÿÿÿÿ8Úï¾1
+L
+java:S1144"*Remove this unused private "setUp" method.(¾ˆë¸ÿÿÿÿÿ8Úï¾1

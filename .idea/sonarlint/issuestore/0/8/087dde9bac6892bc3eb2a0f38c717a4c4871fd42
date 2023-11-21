@@ -1,0 +1,9 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÆ«úÿÿÿÿ8´Ï¤Š¿1
+r	java:S116"VRename this field "DealerLabel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑüÊ¥8öĞ¤Š¿1
+I
+java:S1948",Make "cardImages" transient or serializable.(‹ğŸ 8†Ñ¤Š¿1
+E
+java:S1948"(Make "dealer" transient or serializable.(÷ğêİ8†Ñ¤Š¿1
+G
+java:S1948"*Make "cardBack" transient or serializable.(•„¨Å8†Ñ¤Š¿1
