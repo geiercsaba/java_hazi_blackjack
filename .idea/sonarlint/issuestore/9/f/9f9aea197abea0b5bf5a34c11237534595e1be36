@@ -1,17 +1,0 @@
-
-l
-java:S1192_"PDefine a constant instead of duplicating this literal "Active Player: " 3 times.(ýæ¸8½Æê–¿1
-d
-java:S1192œ"FDefine a constant instead of duplicating this literal " wins" 3 times.(Ÿ¸ß8¾Æê–¿1
-v	java:S135‰"YReduce the total number of break and continue statements in this loop to use at most one.(µ£8¾Æê–¿1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÆ«úÿÿÿÿ8ÄÆê–¿1
-C
-java:S1948"&Make "deck" transient or serializable.(ë·™8ßÆê–¿1
-J
-java:S1948"-Make "leaderBoard" transient or serializable.(Ú¡¤†8ßÆê–¿1
-k
-java:S3252*"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öþÿÿÿÿ8æÆê–¿1
-[
-java:S1155t">Use isEmpty() to check whether the collection is empty or not.(·¿¶ñ8ÿÆê–¿1
-p
-java:S3776€"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ò²Õ¼8—Çê–¿1
