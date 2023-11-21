@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
+/**
+ * Game class
+ * This class is used to display the game
+ * It extends JFrame
+ */
 public class Game extends JFrame
 {
     private LinkedList<PlayerPanel> playerPanels;
@@ -25,6 +30,9 @@ public class Game extends JFrame
     private GridBagConstraints c = new GridBagConstraints();
 
 
+    /**
+     * Constructor
+     */
     public Game()
     {
         super("Blackjack");
@@ -47,6 +55,10 @@ public class Game extends JFrame
     }
 
 
+    /**
+     * setUp method
+     * This method sets up the game window
+     */
     private void setUp()
     {
         setLayout(new GridBagLayout());
@@ -101,6 +113,11 @@ public class Game extends JFrame
     }
 
 
+    /**
+     * addPlayer method
+     * This method adds a player to the game
+     * @param player
+     */
     private void addPlayer(Player player)
     {
         PlayerPanel playerPanel = new PlayerPanel(player);
@@ -111,6 +128,10 @@ public class Game extends JFrame
         repaint();
     }
 
+    /**
+     * newRound method
+     * This method starts a new round
+     */
     private void newRound()
     {
         if(playerPanels.isEmpty())
@@ -179,6 +200,10 @@ public class Game extends JFrame
 
     }
 
+    /**
+     * hit method
+     * This method is called when a player hits
+     */
     private void hit()
     {
         activePlayer.addCard(deck.getCard());
@@ -190,11 +215,19 @@ public class Game extends JFrame
         }
     }
 
+    /**
+     * stand method
+     * This method is called when a player stands
+     */
     private void stand()
     {
         nextPlayer();
     }
 
+    /**
+     * surrender method
+     * This method is called when a player surrenders
+     */
     public void surrender()
     {
         Player player = activePlayer.getPlayer();
@@ -207,6 +240,10 @@ public class Game extends JFrame
         nextPlayer();
     }
 
+    /**
+     * doubleBet method
+     * This method is called when a player doubles
+     */
     private void doubleBet()
     {
         Player player = activePlayer.getPlayer();
@@ -229,6 +266,10 @@ public class Game extends JFrame
         }
     }
 
+    /**
+     * nextPlayer method
+     * This method is called when the next player should play
+     */
     private void nextPlayer()
     {
         if(playerPanels.getLast().equals(activePlayer))
@@ -253,6 +294,10 @@ public class Game extends JFrame
         repaint();
     }
 
+    /**
+     * dealerPlay method
+     * This method is called when the dealer should play
+     */
     private void dealerPlay()
     {
         dealerPanel.setHideCard(false);

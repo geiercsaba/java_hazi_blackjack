@@ -3,19 +3,36 @@ package Game;
 import java.io.*;
 import java.util.*;
 
+/**
+ * LeaderBoard class
+ * This class is used to store the previous players top score
+ */
 public class LeaderBoard {
     private final HashMap<String, Integer> topList;
     private final static String FILE_NAME = "leaderboard.txt";
-    LeaderBoard() {
+
+    /**
+     * Constructor
+     * Initialize the topList hashmap and load the data from file
+     */
+    public LeaderBoard() {
         topList = new HashMap<>();
         loadLeaderBoard();
     }
 
+    /**
+     * Add player to the topList
+     * @param name player name
+     * @param score player score
+     */
     public void addPlayer(String name, int score) {
         if (topList.containsKey(name) && topList.get(name) > score) return;
         topList.put(name, score);
     }
 
+    /**
+     * Load data from file to hashmap
+     */
     public void loadLeaderBoard() {
         File file = new File(FILE_NAME);
 
@@ -30,6 +47,9 @@ public class LeaderBoard {
         }
     }
 
+    /**
+     * Save hashmap data to file
+     */
     public void saveLeaderBoard() {
         // Save hashmap data to file
         File file = new File(FILE_NAME);
@@ -45,6 +65,10 @@ public class LeaderBoard {
         }
     }
 
+    /**
+     * Get the top 10 players
+     * @return top 10 players as a string
+     */
     public String getLeaderBoard() {
         StringBuilder result = new StringBuilder();
         List<Map.Entry<String, Integer>> list = new ArrayList<>(topList.entrySet());
@@ -61,6 +85,9 @@ public class LeaderBoard {
         return result.toString();
     }
 
+    /**
+     * Clear the topList(used for testing) not clearing the file
+     */
     public void clearLeaderBoard() {
         topList.clear();
     }

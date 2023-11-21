@@ -11,6 +11,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * DealerPanel class
+ * This class is used to display the dealer's hand
+ * It extends JPanel
+ */
 public class DealerPanel extends JPanel {
     private LinkedList<BufferedImage> cardImages;
     private Dealer dealer;
@@ -19,6 +24,10 @@ public class DealerPanel extends JPanel {
 
     private boolean hideCard = true;
 
+    /**
+     * Constructor
+     * @param dealer
+     */
     DealerPanel(Dealer dealer) {
         setPreferredSize(new Dimension(200, 170));
         this.dealer = dealer;
@@ -34,6 +43,11 @@ public class DealerPanel extends JPanel {
         }
     }
 
+    /**
+     * addCard method
+     * This method adds a card to the dealer's hand
+     * @param card
+     */
     public void addCard(Card card) {
         dealer.addCard(card);
         String imagePath = "src/Game/img/" + card.getSuit() + "_" + card.getRank() + ".png";
@@ -46,41 +60,51 @@ public class DealerPanel extends JPanel {
         }
     }
 
+    /**
+     * getCardValue method
+     * This method returns the value of the dealer's hand
+     * @return
+     */
     public int getCardValue()
     {
-        int sum = 0;
-        int aceCount = 0;
-        for(Card card: dealer.getHand())
-        {
-            sum += card.getRank().getValue();
-            if (card.getRank() == Rank.ACE)
-                aceCount++;
-        }
-
-        while (sum > 21 && aceCount > 0)
-        {
-            sum -= 10;
-            aceCount--;
-        }
-        return sum;
+        return dealer.getHandValue();
     }
 
+    /**
+     * clearCards method
+     * This method clears the dealer's hand
+     */
     public void clearCards() {
         dealer.clearHand();
         cardImages.clear();
         repaint();
     }
 
+    /**
+     * getDealer method
+     * This method returns the dealer name
+     */
     public Dealer getDealer(){
         return dealer;
     }
 
+
+    /**
+     * setHideCard method
+     * This method sets the hideCard variable
+     * @param hideCard
+     */
     public void setHideCard(boolean hideCard) {
         this.hideCard = hideCard;
         repaint();
     }
 
 
+    /**
+     * paintComponent method
+     * This method paints the dealer's hand
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
